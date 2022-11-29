@@ -1,4 +1,4 @@
-#!/usr/bin/env nodes
+#!/usr/bin/env node
 
 const { program } = require('commander');
 
