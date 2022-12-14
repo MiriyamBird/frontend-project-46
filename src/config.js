@@ -1,8 +1,15 @@
 import { readFileSync } from 'node:fs';
+import path from 'path';
 
-const config = (pathToFile1, pathToFile2) => {
-    const config1 = JSON.parse(readFileSync(pathToFile1));
-    const config2 = JSON.parse(readFileSync(pathToFile2));
+const readFile = (anyPath) => {
+    const fullPath = path.resolve(process.cwd(), anyPath);
+    const data = readFileSync(fullPath).toString()
+    return data;
+}
+
+const config = (path1, path2) => {
+    const config1 = JSON.parse(readFile(path1));
+    const config2 = JSON.parse(readFile(path2));
 
     return [config1, config2];
 };
