@@ -23,7 +23,7 @@ const checkKeysIsChanged = (file1, file2) => {
 
 const compareFiles = (file1, file2) => {
     const keysIsChanged = checkKeysIsChanged(file1, file2);
-    const allKeys = Object.keys(keysIsChanged).sort();
+    const allKeys = _.sortBy(Object.keys(keysIsChanged));
 
     let result = '{\n';
 
