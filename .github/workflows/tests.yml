@@ -1,0 +1,11 @@
+name: tests
+on: push
+jobs:
+  jest:
+    runs-on: ubuntu-latest
+    steps:
+      run: make jest
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      run: make lint
