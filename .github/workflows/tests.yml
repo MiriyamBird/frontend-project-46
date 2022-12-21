@@ -1,11 +1,27 @@
 name: tests
 on: push
 jobs:
+
   jest:
     runs-on: ubuntu-latest
     steps:
-      - run: NODE_OPTIONS=--experimental-vm-modules npx jest
+      - uses: actions/checkout@v2
+      - name: use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+      - run: make install
+      - run: make jest
+
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - run: npx eslint .
+      - uses: actions/checkout@v2
+      - name: use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+      - run: make install
+      - run: make lint
