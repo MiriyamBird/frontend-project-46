@@ -4,8 +4,8 @@ jobs:
   jest:
     runs-on: ubuntu-latest
     steps:
-      run: NODE_OPTIONS=--experimental-vm-modules npx jest
+      - run: NODE_OPTIONS=--experimental-vm-modules npx jest
   eslint:
     runs-on: ubuntu-latest
     steps:
-      run: npx eslint .
+      - run: npx eslint .
