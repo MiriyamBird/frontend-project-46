@@ -1,7 +1,7 @@
 name: tests
 on: push
 jobs:
-  jest:
+  eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,11 +11,4 @@ jobs:
           node-version: '16.x'
           cache: 'npm'
       - run: make install
-      - run: make jest
-      - name: test coverage
-        uses: paambaati/codeclimate-action@v3.2.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC }}
-        with:
-          coverageCommand: npm run coverage
-          debug: true
+      - run: make lint
