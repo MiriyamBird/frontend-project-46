@@ -14,8 +14,9 @@ const findFileExtension = (filePath) => {
 };
 
 const config = (filePath) => {
+  let result;
   if (findFileExtension(filePath) === 'json') {
-    var result = JSON.parse(readFile(filePath));
+    result = JSON.parse(readFile(filePath));
   }
   return result;
 };
