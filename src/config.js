@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import path from 'path';
+import yaml from 'js-yaml';
 
 const readFile = (filePath) => {
   const fullPath = path.resolve(process.cwd(), filePath);
@@ -7,16 +8,16 @@ const readFile = (filePath) => {
   return data;
 };
 
-const findFileExtension = (filePath) => {
-  const fileName = filePath.split('/');
-  const fileExtension = fileName.at(-1).split('.')[1].toLowerCase();
-  return fileExtension;
-};
+const findFileExtension = (filePath) => path.extname(filePath);
 
 const config = (filePath) => {
+  const fileExtension = findFileExtension(filePath);
   let result;
-  if (findFileExtension(filePath) === 'json') {
+  if (fileExtension === '.json') {
     result = JSON.parse(readFile(filePath));
+  }
+  if (fileExtension === ('.yml' || '.yaml')) {
+    result = yaml.load(readFile(filePath));
   }
   return result;
 };
