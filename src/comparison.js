@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 const compareFiles = (file1, file2) => {
-  const keys1 = Object.keys(file1);
-  const keys2 = Object.keys(file2);
+  const keys1 = _.keys(file1);
+  const keys2 = _.keys(file2);
   const allKeys = _.union(keys1, keys2);
   const sortedKeys = _.sortBy(allKeys);
 
@@ -22,7 +22,7 @@ const compareFiles = (file1, file2) => {
       };
     }
 
-    return { type: 'changed', key, value: file1[key] };
+    return { type: 'unchanged', key, value: file1[key] };
   });
 
   return result;
