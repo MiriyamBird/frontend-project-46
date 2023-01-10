@@ -29,11 +29,11 @@ const stylish = (value) => {
       const getValue = (val, sign) => `${shortIndent(depth)}${sign}${node.key}: ${formattedValue(val, depth)}\n`;
       switch (node.type) {
         case 'added':
-          return getValue(node.val, signs.plus);
+          return getValue(node.value, signs.plus);
         case 'deleted':
-          return getValue(node.val, signs.minus);
+          return getValue(node.value, signs.minus);
         case 'unchanged':
-          return getValue(node.val, signs.space);
+          return getValue(node.value, signs.space);
         case 'changed':
           return `${getValue(node.oldValue, signs.minus)}${getValue(node.newValue, signs.plus)}`;
         case 'object':
