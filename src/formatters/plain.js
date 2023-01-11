@@ -20,13 +20,13 @@ const plain = (value) => {
         case 'object':
           return iter(node.value, newKeys);
         case 'added':
-          return `Property ${newKeys.join('.')} was added with value: ${formattedValue(node.value)}`;
+          return `Property '${newKeys.join('.')}' was added with value: ${formattedValue(node.value)}`;
         case 'deleted':
-          return `Property ${newKeys.join('.')} was removed`;
+          return `Property '${newKeys.join('.')}' was removed`;
         case 'unchanged':
           return 'unchanged';
         case 'changed':
-          return `Property ${newKeys.join('.')} was update. From ${formattedValue(node.oldValue)} to ${formattedValue(node.newValue)}`;
+          return `Property '${newKeys.join('.')}' was updated. From ${formattedValue(node.oldValue)} to ${formattedValue(node.newValue)}`;
         default:
           return 'Error';
       }
