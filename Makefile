@@ -18,3 +18,9 @@ coverage: #jest coverage
 
 gendiff: #gendiff
 	gendiff __fixtures__/file1.json __fixtures__/file2.json
+
+plain: #gendiff
+	gendiff -f plain __fixtures__/file1.json __fixtures__/file2.json
+
+json: #gendiff
+	gendiff -f json __fixtures__/file1.json __fixtures__/file2.json
