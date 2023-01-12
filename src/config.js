@@ -12,14 +12,13 @@ const findFileExtension = (filePath) => path.extname(filePath);
 
 const config = (filePath) => {
   const fileExtension = findFileExtension(filePath);
-  let result;
   if (fileExtension === '.json') {
-    result = JSON.parse(readFile(filePath));
+    return JSON.parse(readFile(filePath));
   }
   if (fileExtension === ('.yml' || '.yaml')) {
-    result = yaml.load(readFile(filePath));
+    return yaml.load(readFile(filePath));
   }
-  return result;
+  return 'Error';
 };
 
 export default config;
