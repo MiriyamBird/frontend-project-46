@@ -23,3 +23,11 @@ test('check json - plain', () => {
 test('check yml - plain', () => {
   expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain')).toEqual(readFileSync(getFixturePath('expected-result-plain.txt'), 'utf8'));
 });
+
+test('check json - json', () => {
+  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json')).toEqual(readFileSync(getFixturePath('expected-result-json.txt'), 'utf8'));
+});
+
+test('check yml - json', () => {
+  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json')).toEqual(readFileSync(getFixturePath('expected-result-json.txt'), 'utf8'));
+});

@@ -42,10 +42,8 @@ const stylish = (value) => {
           return 'Error';
       }
     });
-
     return result;
   };
-
   return `{\n${iter(value, 1).join('')}}`;
 };
 
