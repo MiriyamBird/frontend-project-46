@@ -16,9 +16,12 @@ Gendiff is a CLI application that generates the difference between two files (js
 ## Use
 ### Stylish
     $ gendiff <filepath1> <filepath2>
+<a href="https://asciinema.org/a/wN6MZeVp56y8WoJ26jGgyhMiO" target="_blank"><img src="https://asciinema.org/a/wN6MZeVp56y8WoJ26jGgyhMiO.svg" /></a>
 
 ### Plain
     $ gendiff -f plain <filepath1> <filepath2>
+<a href="https://asciinema.org/a/sAklpb2xqOP7iYWzHDshY5B9j" target="_blank"><img src="https://asciinema.org/a/sAklpb2xqOP7iYWzHDshY5B9j.svg" /></a>
 
 ### JSON
     $ gendiff -f json <filepath1> <filepath2>
+<a href="https://asciinema.org/a/DLAxoODxQaDDpHoVIjO4t6Hsx" target="_blank"><img src="https://asciinema.org/a/DLAxoODxQaDDpHoVIjO4t6Hsx.svg" /></a>
