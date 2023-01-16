@@ -16,18 +16,9 @@ Gendiff is a CLI application that generates the difference between two files (js
 ## Use
 ### Stylish
     $ make gendiff
-or
-    $ gendiff <filepath1> <filepath2>
-or
-    $ gendiff -f stylish <filepath1> <filepath2>
-
 
 ### Plain
     $ make plain
-or
-    $ gendiff -f plain <filepath1> <filepath2>
 
 ### JSON
     $ make json
-or
-    $ gendiff -f json <filepath1> <filepath2>
