@@ -8,29 +8,19 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-test.each([
-  { file1: 'file1.json', file2: 'file2.json', expected: 'expected-result-stylish.txt' },
-  { file1: 'file1.yml', file2: 'file2.yml', expected: 'expected-result-stylish.txt' },
-  {
-    file1: 'file1.json', file2: 'file2.json', expected: 'expected-result-stylish.txt', style: 'stylish',
-  },
-  {
-    file1: 'file1.yml', file2: 'file2.yml', expected: 'expected-result-stylish.txt', style: 'stylish',
-  },
-  {
-    file1: 'file1.json', file2: 'file2.json', expected: 'expected-result-plain.txt', style: 'plain',
-  },
-  {
-    file1: 'file1.yml', file2: 'file2.yml', expected: 'expected-result-plain.txt', style: 'plain',
-  },
-  {
-    file1: 'file1.json', file2: 'file2.json', expected: 'expected-result-json.txt', style: 'json',
-  },
-  {
-    file1: 'file1.yml', file2: 'file2.yml', expected: 'expected-result-json.txt', style: 'json',
-  },
-])('Check $file1 and $file2 with $style format', ({
-  file1, file2, expected, style,
-}) => {
-  expect(genDiff(getFixturePath(file1), getFixturePath(file2), style)).toEqual(readFileSync(getFixturePath(expected), 'utf8'));
+const tests = [
+  ['file1.json', 'file2.json', 'expected-result-stylish.txt'],
+  ['file1.yml', 'file2.yml', 'expected-result-stylish.txt'],
+  ['file1.json', 'file2.json', 'expected-result-stylish.txt', 'stylish'],
+  ['file1.yml', 'file2.yml', 'expected-result-stylish.txt', 'stylish'],
+  ['file1.json', 'file2.json', 'expected-result-plain.txt', 'plain'],
+  ['file1.yml', 'file2.yml', 'expected-result-plain.txt', 'plain'],
+  ['file1.json', 'file2.json', 'expected-result-json.txt', 'json'],
+  ['file1.yml', 'file2.yml', 'expected-result-json.txt', 'json'],
+];
+
+describe.each(tests)('Compare data', (file1, file2, expected, style) => {
+  test('Compare data', () => {
+    (expect(genDiff(getFixturePath(file1), getFixturePath(file2), style)).toEqual(readFileSync(getFixturePath(expected), 'utf8')));
+  });
 });
