@@ -1,28 +1,28 @@
 import _ from 'lodash';
 
-const compareFiles = (file1, file2) => {
-  const keys1 = _.keys(file1);
-  const keys2 = _.keys(file2);
+const compareFiles = (data1, data2) => {
+  const keys1 = _.keys(data1);
+  const keys2 = _.keys(data2);
   const allKeys = _.union(keys1, keys2);
   const sortedKeys = _.sortBy(allKeys);
 
   const result = sortedKeys.map((key) => {
-    if (_.isObject(file1[key]) && _.isObject(file2[key])) {
-      return { type: 'object', key, value: compareFiles(file1[key], file2[key]) };
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+      return { type: 'object', key, value: compareFiles(data1[key], data2[key]) };
     }
-    if (!Object.hasOwn(file1, key)) {
-      return { type: 'added', key, value: file2[key] };
+    if (!Object.hasOwn(data1, key)) {
+      return { type: 'added', key, value: data2[key] };
     }
-    if (!Object.hasOwn(file2, key)) {
-      return { type: 'deleted', key, value: file1[key] };
+    if (!Object.hasOwn(data2, key)) {
+      return { type: 'deleted', key, value: data1[key] };
     }
-    if (file1[key] !== file2[key]) {
+    if (data1[key] !== data2[key]) {
       return {
-        type: 'changed', key, oldValue: file1[key], newValue: file2[key],
+        type: 'changed', key, oldValue: data1[key], newValue: data2[key],
       };
     }
 
-    return { type: 'unchanged', key, value: file1[key] };
+    return { type: 'unchanged', key, value: data1[key] };
   });
 
   return result;

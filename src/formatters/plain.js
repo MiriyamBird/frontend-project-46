@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const formattedValue = (value) => {
+const getFormattedValue = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
@@ -20,15 +20,15 @@ const plain = (value) => {
         case 'object':
           return iter(node.value, newKeys);
         case 'added':
-          return `Property '${newKeys.join('.')}' was added with value: ${formattedValue(node.value)}`;
+          return `Property '${newKeys.join('.')}' was added with value: ${getFormattedValue(node.value)}`;
         case 'deleted':
           return `Property '${newKeys.join('.')}' was removed`;
         case 'unchanged':
           return 'unchanged';
         case 'changed':
-          return `Property '${newKeys.join('.')}' was updated. From ${formattedValue(node.oldValue)} to ${formattedValue(node.newValue)}`;
+          return `Property '${newKeys.join('.')}' was updated. From ${getFormattedValue(node.oldValue)} to ${getFormattedValue(node.newValue)}`;
         default:
-          return 'Error';
+          throw new Error('Unable to compare properties');;
       }
     });
 
