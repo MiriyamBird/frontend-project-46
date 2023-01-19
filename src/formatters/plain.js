@@ -28,7 +28,7 @@ const plain = (value) => {
         case 'changed':
           return `Property '${newKeys.join('.')}' was updated. From ${getFormattedValue(node.oldValue)} to ${getFormattedValue(node.newValue)}`;
         default:
-          throw new Error('Unable to compare properties');;
+          throw new Error('Unable to compare properties');
       }
     });
 
